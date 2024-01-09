@@ -1,0 +1,48 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Folder {
+  id: ID!
+  title: String!
+  todos: [Todo]!
+}
+
+type Todo {
+  id: ID!
+  title: String!
+  text: String!
+  status: Status!
+  folder: Folder!
+}
+
+type Status {
+  id: ID!
+  title: String!
+  todos: [Todo]!
+}
+
+type Query {
+  statusList: [Status!]!
+  status(id: Int!): Status!
+  todos: [Todo!]!
+  todo(id: Int!): Todo!
+  folders: [Folder!]!
+  folder(id: Int!): Folder!
+}
+
+type Mutation {
+  addTodo(addTodoInput: AddTodoInput!): Todo!
+  changeTodoStatus(todoId: Int!, statusId: Int!): Todo!
+  addFolder(addFolderInput: AddFolderInput!): Folder!
+}
+
+input AddTodoInput {
+  title: String!
+  text: String!
+  folderId: Int!
+}
+
+input AddFolderInput {
+  title: String!
+}
